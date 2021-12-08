@@ -1,0 +1,22 @@
+*{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  /* width: 100vh; */
+  /* height: 100vh; */
+}
+
+
+.App {
+  margin: 20px;
+  display: grid;
+  height: 90vh;
+  background: rgb(209, 173, 173);
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr; 
+}
+
+.box {
+  
+  border: 2px solid black;
+}
