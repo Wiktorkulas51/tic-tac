@@ -1,27 +1,30 @@
 import React from "react";
-let currentBox;
+import obj from "./win";
+let allNumers = [];
 
 const Box = (props) => {
+  const { className, state } = props;
+
+  const equalArray = (a, b) => {
+    return a.length === b.length && a.every((val, index) => val === b[index]);
+  };
+  const filter = (array) => {
+    return array.filter((val) => val >= 1);
+  };
   const giveClassOnclick = (e) => {
-    console.log(e.target.className);
-    currentBox = e.target.className;
-    if (
-      currentBox === `${currentBox} cross` ||
-      currentBox === `${currentBox} circle`
-    ) {
+    let currentBox = e.target.className;
+
+    if (e.target.innerHTML === "circle" || e.target.innerHTML === "cross") {
       alert("pole jest juz zajete!");
     } else {
-      currentBox += " cricle";
-      console.log(currentBox);
+      e.target.innerHTML = state;
     }
+    const numberOfBox = currentBox.split(" ");
+    allNumers.push(numberOfBox[1]);
+    console.log(filter(allNumers));
+    if (equalArray(allNumers, obj.win1)) console.log("win");
   };
-  const { className, state } = props;
-  console.log(state);
-  return (
-    <div className={className} onClick={(e) => giveClassOnclick(e)}>
-      {state === "cricle" ? <div>asd</div> : <div>abc</div>}
-    </div>
-  );
+  return <div className={className} onClick={(e) => giveClassOnclick(e)}></div>;
 };
 
 export default Box;
